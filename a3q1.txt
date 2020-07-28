@@ -1,0 +1,76 @@
+Q.1. Rewrite the following pseudocode segment using a loop structure in C, C++, Java and Python:
+k = (j + 13) / 27
+loop:
+if k > 10 then goto out
+k = k + 1
+i = 3 * k - 1
+goto loop
+out: . . .
+Assume all variables are integer type. Discuss which language, for this code, has the best writability, the best
+readability, and the best combination of the two. Redo the exercise, except, this time make all the variables and
+constants floating-point type, and change the statement
+k = k + 1
+to
+k = k + 1.2
+
+soln ->
+#include<iostream>
+using namespace std;
+void fun(int num)
+{
+    int j=num;
+     int i, k;
+    k=(j+13)/27;
+    cout<<"k  "<<k<<'\n';
+    loop:
+    if(k>10)
+    {
+    goto out;
+    }
+    else
+    {
+    k=k+1;
+    i=3*k-1;
+    cout<<"in else"<<'\n';
+    cout<<"k "<<k<<" i "<<i<<'\n';
+    goto loop;
+    cout<<" hello in else"<<'\n';
+    }
+
+    out:
+    cout<< "Hello";
+    
+}
+int main()
+{
+int num;
+cin>>num;
+fun(num);
+return 0;
+}
+
+output->4                                                                                                                               
+k  0                                                                                                                            
+in else                                                                                                                         
+k 1 i 2                                                                                                                         
+in else                                                                                                                         
+k 2 i 5                                                                                                                         
+in else                                                                                                                         
+k 3 i 8                                                                                                                         
+in else                                                                                                                         
+k 4 i 11                                                                                                                        
+in else                                                                                                                         
+k 5 i 14                                                                                                                        
+in else                                                                                                                         
+k 6 i 17                                                                                                                        
+in else                                                                                                                         
+k 7 i 20                                                                                                                        
+in else                                                                                                                         
+k 8 i 23                                                                                                                        
+in else                                                                                                                         
+k 9 i 26                                                                                                                        
+in else                                                                                                                         
+k 10 i 29                                                                                                                       
+in else                                                                                                                         
+k 11 i 32                                                                                                                       
+Hello 
