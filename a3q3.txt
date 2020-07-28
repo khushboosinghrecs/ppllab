@@ -1,0 +1,58 @@
+Q.3. In a letter to the editor of CACM, Rubin (1987) uses the following code segment as evidence that the
+readability of some code with gotos is better than the equivalent code without gotos. This code finds the first
+row of an n by n integer matrix named x that has nothing but zero values.
+for (i = 1; i <= n; i++) {
+for (j = 1; j <= n; j++)
+if (x[i][j] != 0)
+goto reject;
+println ('First all-zero row is:', i);
+break;
+reject:
+}
+Rewrite this code without gotos in one of the following languages: C, C++ or Java. Compare the readability
+of your code to that of the example code.
+
+soln->
+
+#include<iostream>
+using namespace std;
+int main()
+{
+    int  n, i, j;
+    cin>>n;
+    int x[n][n];
+    for(int i=0; i<n; i++)
+    {
+        for(int j=0; j<n; j++)
+        {
+            cin>>x[i][j];
+        }
+    }
+    for(i=0; i<n; i++)
+    {
+        for(j=0; j<n; j++)
+        {
+            if(x[i][j]!=0)
+            {
+                goto reject;
+            }
+            else
+            {
+            cout<<"first all-zero row is"<<i;
+            break;
+            }
+        }
+    }
+    reject: 
+        cout<<"hello";
+
+    return 0;
+}
+
+output->
+ 
+input
+4
+2                                                                                                                              
+1 2 3 4                                                                                                                        
+hello  
