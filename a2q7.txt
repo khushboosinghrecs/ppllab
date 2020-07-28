@@ -1,0 +1,48 @@
+Q.7. Write a C program that has the following statements:
+int a, b;
+a = 10;
+b = a + fun();
+printf("With the function call on the right, ");
+printf(" b is: %d\n", b);
+a = 10;
+b = fun() + a;
+printf("With the function call on the left, ");
+printf(" b is: %d\n", b);
+and define fun to add 10 to a. Explain the results.
+
+ans:
+
+program in c:
+#include<stdio.h>
+#include<conio.h>
+int fun(int x)
+{
+    return x*x;
+}
+
+int main()
+{
+int a, b;
+a = 10;
+b = a + fun(a);
+printf("With the function call on the right, ");
+printf(" b is: %d\n", b);
+a = 10;
+b = fun(a) + a;
+printf("With the function call on the left, ");
+printf(" b is: %d\n", b);
+a=20;
+b = fun(a) + a;
+printf("With the function call on the left, ");
+printf(" b is: %d\n", b);
+return 0;
+}
+
+result:
+
+With the function call on the right,  b is: 110        // result is same                                                                 
+With the function call on the left,  b is: 110   
+With the function call on the left,  b is: 240 
+
+analysis: we know on one variable value can be updated so here is the same case .
+after first excution the value of a be updated.
