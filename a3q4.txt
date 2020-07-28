@@ -1,0 +1,69 @@
+Q.4. Consider the following programming problem: The values of three integer variables—first, second,
+and third—must be placed in the three variables max, mid, and min, with the obvious meanings, without
+using arrays or user-defined or predefined subprograms. Write two solutions to this problem, one that
+uses nested selections and one that does not. Compare the complexity and expected reliability of the two.
+
+Ans:
+Program in c++:
+ ---> nesting solution:
+#include<iostream>
+using namespace std;
+int main()
+{
+    int first, second, third;
+    cin>>first>>second>>third;
+    int max, min, mid;
+    max=first; 
+    mid=second;
+    min=third;
+    if(max>min && max > min)
+    {
+        cout<<"first is max"<<'\n';
+    }
+     if(mid > min && max <mid)
+    {
+        cout<<"second is max"<<'\n';
+    }
+    if( min>mid && min>max)
+    {
+        cout<<"third is max"<<'\n';
+    }
+    
+    if(max==min or min==mid or mid ==max)
+    {
+        cout<<" values are same";
+    }
+    
+    return 0;
+}
+
+output: 
+3 4 6                                                                                                                   
+third is max 
+
+
+--> without nesting solution:
+#include<iostream>
+using namespace std;
+int main() 
+{ 
+    int first, second, third;
+    cin>>first>>second>>third;
+    int max, min, largest, mid;
+    max=first; 
+    mid=second;
+    min=third;
+
+	largest = max > mid ? (max > min ? max: min) : (mid> min ? mid : min); 
+
+	cout<<"largest number is "<< largest<<'\n';
+
+	return 0; 
+} 
+
+output:
+2 4 7
+
+largest is 7
+
+
