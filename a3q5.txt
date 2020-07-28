@@ -1,0 +1,123 @@
+Q.5. Write a program in a language that you know to determine the ratio of the time required to pass a large
+array by reference and the time required to pass the same array by value. Make the array as large as possible
+on the machine and implementation you use. Pass the array as many times as necessary to get reasonably
+accurate timings of the passing operations.
+
+Ans:
+-->pass by value
+// C program to demonstrate passing an array 
+// by value using structures. 
+#include<iostream>
+#include <chrono> 
+using namespace std;
+using namespace std::chrono;
+
+# define SIZE 5 
+
+// A wrapper for array to make sure that array 
+// is passed by value. 
+struct ArrayWrapper 
+{ 
+	int arr[SIZE]; 
+}; 
+
+// An array is passed by value wrapped in temp 
+void modify(struct ArrayWrapper temp) 
+{ 
+	int *ptr = temp.arr; 
+	int i; 
+
+	// Display array contents 
+	printf("In 'modify()', before modification\n"); 
+	for (i = 0; i < SIZE; ++i) 
+	   cout<< ptr[i]<<" "<<'\n'; 
+
+	printf("\n"); 
+
+	// Modify the array 
+	for (i = 0; i < SIZE; ++i) 
+		ptr[i] = 100; // OR *(ptr + i) 
+
+	printf("\nIn 'modify()', after modification\n"); 
+	for (i = 0; i < SIZE; ++i) 
+		printf("%d ", ptr[i]); // OR *(ptr + i) 
+} 
+
+// Driver code 
+int main() 
+{ 
+	int i; 
+	struct ArrayWrapper obj; 
+	for (i=0; i<SIZE; i++) 
+		obj.arr[i] = 10; 
+  
+  auto start1 = high_resolution_clock::now();
+    modify(obj);
+    auto stop1 = high_resolution_clock::now(); 
+       auto duration1= duration_cast<microseconds>(stop1 - start1); 
+        cout << duration1.count() << " microseconds" << endl;
+	printf("\n\nIn 'Main', after calling modify() \n"); 
+	for (i = 0; i < SIZE; ++i) 
+		printf("%d ", obj.arr[i]); // Not changed 
+
+	printf("\n"); 
+
+	return 0; 
+} 
+
+output:
+In 'modify()', before modification                                                                                        
+10 10 10 10 10                                                                                                            
+                                                                                                                          
+In 'modify()', after modification                                                                                         
+100 100 100 100 100 85 microseconds                                                                                       
+                                                                                                                          
+                                                                                                                          
+In 'Main', after calling modify()                                                                                         
+10 10 10 10 10
+
+
+->> pass by refernce..
+// C program to demonstrate passing an array 
+// by value using structures. 
+#include<iostream>
+#include <chrono> 
+using namespace std;
+using namespace std::chrono;
+
+# define SIZE 5
+void modify(int a[])
+
+{
+    for(int i=0; i<SIZE; i++)
+    {
+        a[i]=300;
+    }
+}
+int main() 
+{ 
+	int i; 
+	int arr[SIZE]; 
+	for (i=0; i<SIZE; i++) 
+		arr[i] = 10; 
+  
+  auto start1 = high_resolution_clock::now();
+    modify(arr);
+    auto stop1 = high_resolution_clock::now(); 
+       auto duration1= duration_cast<microseconds>(stop1 - start1); 
+        cout << duration1.count() << " microseconds" << endl;
+	printf("\n\nIn 'Main', after calling modify() \n"); 
+	for (i = 0; i < SIZE; ++i) 
+		printf("%d ", arr[i]); // Not changed 
+
+	printf("\n"); 
+
+	return 0; 
+} 
+ output:
+input
+0 microseconds                                                                                                          
+                                                                                                                        
+                                                                                                                        
+In 'Main', after calling modify()                                                                                       
+300 300 300 300 300   
