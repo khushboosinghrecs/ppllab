@@ -1,0 +1,29 @@
+Q.1. Design a set of simple test programs to determine the type compatibility rules of a C compiler to
+which you have access.
+
+Ans:
+
+ompatibility between types refers to the similarity of two types to each other. ... The types unsigned 
+short and unsigned short int are the same and are compatible. The types int , signed , and signed int
+ are the same and are compatible. The types unsigned and unsigned int are the same and are compatible.
+
+
+c program:
+#include<stdio.h>
+#include<conio.h>
+t main()
+{
+    float n1=12.5;
+int n2=n1;
+    
+    printf("%f\n", n1);  //This assigning of float value to int type will result in loss of decimal value of n1. However, this 
+                        //type compatibility will not show any error but it might give a warning “possible loss of data”.
+    printf("%d\n", n2);
+    return 0;
+   
+    
+}
+
+result:
+12.500000                                                                                                               
+12 
