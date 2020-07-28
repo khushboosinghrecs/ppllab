@@ -1,0 +1,31 @@
+Q.6. Write a program in either C++ or Java that illustrates the order of evaluation of expressions used as
+actual parameters to a method.
+
+Ans:
+program in c++:
+#include <iostream>
+using namespace std;
+int fun(int x)
+{
+    return x*x;
+}
+
+int main()
+{
+    int x, y, result1, result2;
+    x=2;
+    y=3;
+    result1=fun(x);
+    result2=fun(y);
+cout<<result1<<'\n';
+cout<<result2<<'\n';
+    return 0;
+}
+
+
+result:
+4
+9
+
+
+Analysis: according to output it is evaluated as the evaluation of actual parametrs.
